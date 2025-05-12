@@ -79,8 +79,8 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: Install feeds
-      run: rm -rf openwrt/feeds/smpackage/miniupnpd-iptables
+    - name: Delete feeds
+      run: rm -rf openwrt/feeds/smpackage/miniupnpd-iptables && cd openwrt/feeds/smpackage && ll
 
     - name: Load custom configuration
       run: |
