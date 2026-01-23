@@ -46,17 +46,8 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         # docker rmi `docker images -q`
-        # 获取镜像 ID 并存入变量
-        IMAGES=$(docker images -q)
-        echo $IMAGES
-            
-        # 检查变量是否为空
-        if [ -n "$IMAGES" ]; then
-          docker rmi $IMAGES
-          echo "发现符合条件的镜像，删除成功。"
-        else
-          echo "没有发现符合条件的镜像，跳过删除。"
-        fi
+        docker images -q
+        docker image prune -f
         
         sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
         sudo -E apt-mark hold grub-efi-amd64-signed
