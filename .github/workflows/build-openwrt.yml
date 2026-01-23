@@ -47,7 +47,8 @@ jobs:
       run: |
         # docker rmi `docker images -q`
         # 获取镜像 ID 并存入变量
-        IMAGES=$(docker images -q "ubuntu-22.04")
+        IMAGES=$(docker images -q)
+        echo $IMAGES
             
         # 检查变量是否为空
         if [ -n "$IMAGES" ]; then
